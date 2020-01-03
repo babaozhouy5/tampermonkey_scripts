@@ -2,13 +2,14 @@
 // @icon         https://www.douyu.com/favicon.ico
 // @name         斗鱼弹幕弹窗
 // @namespace    [url=mailto:nwglbbz@gmail.com]nwglbbz@gmail.com[/url]
-// @version      0.2
+// @version      0.3
 // @description  斗鱼播放器内弹幕弹窗
 // @author       babaozhouy5
 // @match        https://www.douyu.com/*
 // @require      http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js
 // @grant        GM_log
 // @grant        GM_addStyle
+// @note         2020.01.04-v0.3 给播放器中的弹幕增加发送姓名，优化元素选取
 // ==/UserScript==
 
 (function () {
@@ -152,21 +153,26 @@
 
     $(function () {
         var check_exist = setInterval(function () {
-            if ($('ul#js-barrage-list').length) {
+            if ($('ul#js-barrage-list').length && $('#__h5player > div.comment-37342a > div.danmu-6e95c1').length) {
                 var last_danmu = null;
+                var new_danmu = null;
                 $('ul#js-barrage-list').on('DOMNodeInserted', function () {
                     // GM_log("success");
-                    var danmu_list = $('ul.Barrage-list')[0];
-                    var len = danmu_list.children.length;
-                    var new_danmu = danmu_list.children[len - 1].innerText;
+                    new_danmu = $('ul.Barrage-list > li:last-child')[0].innerText;
 
                     if (new_danmu != last_danmu) {
                         var name, say, danmuDiv;
                         var name_color = '#03e6ff', say_color = 'white', welcome_color = '#efed0b';
                         var items = new_danmu.split('：');
                         if (items.length > 1) {
-                            name = items[0];
-                            say = items[1];
+                            name = items[0].trim().replace(/\n\s+/, "-");
+                            var simple_name = items[0].trim().replace(/.*\n\s+/, "");
+                            say = items[1].trim();
+                            var last_danmu_tag_h5_player = $('#__h5player > div.comment-37342a > div.danmu-6e95c1 > div:last-child')[0]
+                            if (last_danmu_tag_h5_player != undefined) {
+                                last_danmu_tag_h5_player.children[0].innerText = simple_name + "：" + say;
+                            }
+
                             danmuDiv = "<div class='danmu'>";
                             danmuDiv += "<font size='2' color='" + name_color + "'>" + name + "：</font>";
                             danmuDiv += "<font size='2' color='" + say_color + "'>" + say + "<br/></font></div>";
