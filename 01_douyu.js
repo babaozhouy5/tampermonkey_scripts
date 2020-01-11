@@ -2,13 +2,15 @@
 // @icon         https://www.douyu.com/favicon.ico
 // @name         斗鱼弹幕弹窗
 // @namespace    [url=mailto:nwglbbz@gmail.com]nwglbbz@gmail.com[/url]
-// @version      0.4
+// @version      0.5
 // @description  斗鱼播放器内弹幕弹窗
 // @author       babaozhouy5
 // @match        https://www.douyu.com/*
 // @require      http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js
 // @grant        GM_log
 // @grant        GM_addStyle
+// @note         2020.01.11-v0.5 调整弹幕弹窗z-index，高于播放器，低于外部界面
+// @note         2020.01.11-v0.4 调整播放器中弹幕字体大小
 // @note         2020.01.04-v0.3 给播放器中的弹幕增加发送姓名，优化元素选取
 // ==/UserScript==
 
@@ -16,7 +18,7 @@
     'use strict';
 
     // Your code here...
-    GM_addStyle(".moveBar {position:absolute;width:245px;height:330px;background:#08466570;z-index:500;border-radius:10px 10px 10px 10px;}");
+    GM_addStyle(".moveBar {position:absolute;width:245px;height:330px;background:#08466570;z-index:5;border-radius:10px 10px 10px 10px;}");
     GM_addStyle(".danmu_banner {cursor:move;padding:2px 0px 2px 0px;border-bottom:solid 1px #ada6a6;text-align:center;border-radius:10px 10px 0px 0px;}");
     GM_addStyle('.danmu_content {width:240px;height:280px;overflow:auto;padding-left:5px;display:block;}');
     GM_addStyle('.danmu_content::-webkit-scrollbar {width:8px;height:1px;}');
