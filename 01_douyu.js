@@ -171,6 +171,7 @@
                             var last_danmu_tag_h5_player = $('#__h5player > div.comment-37342a > div.danmu-6e95c1 > div:last-child')[0]
                             if (last_danmu_tag_h5_player != undefined) {
                                 last_danmu_tag_h5_player.children[0].innerText = simple_name + "：" + say;
+                                last_danmu_tag_h5_player.style.fontSize = "15px";
                             }
 
                             danmuDiv = "<div class='danmu'>";
