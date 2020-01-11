@@ -2,7 +2,7 @@
 // @icon         https://www.douyu.com/favicon.ico
 // @name         斗鱼弹幕弹窗
 // @namespace    [url=mailto:nwglbbz@gmail.com]nwglbbz@gmail.com[/url]
-// @version      0.3
+// @version      0.4
 // @description  斗鱼播放器内弹幕弹窗
 // @author       babaozhouy5
 // @match        https://www.douyu.com/*
