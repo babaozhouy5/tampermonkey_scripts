@@ -2,13 +2,14 @@
 // @icon         https://www.douyu.com/favicon.ico
 // @name         斗鱼弹幕弹窗
 // @namespace    [url=mailto:nwglbbz@gmail.com]nwglbbz@gmail.com[/url]
-// @version      0.5
+// @version      0.6
 // @description  斗鱼播放器内弹幕弹窗
 // @author       babaozhouy5
 // @match        https://www.douyu.com/*
 // @require      http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js
 // @grant        GM_log
 // @grant        GM_addStyle
+// @note         2020.07.26-v0.6 修复因斗鱼页面改版导致的错误
 // @note         2020.01.11-v0.5 调整弹幕弹窗z-index，高于播放器，低于外部界面
 // @note         2020.01.11-v0.4 调整播放器中弹幕字体大小
 // @note         2020.01.04-v0.3 给播放器中的弹幕增加发送姓名，优化元素选取
@@ -37,7 +38,7 @@
 
     // construct moveableDiv
     $(function () {
-        var host_name = $('a.Title-anchorName')[0].title;
+        var host_name = $('h3.Title-header').title;
 
         // construct moveable div
         var moveableDiv = "<div class='moveBar'>";
