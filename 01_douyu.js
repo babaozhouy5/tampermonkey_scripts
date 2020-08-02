@@ -9,6 +9,7 @@
 // @require      http://apps.bdimg.com/libs/jquery/2.0.3/jquery.min.js
 // @grant        GM_log
 // @grant        GM_addStyle
+// @note         2020.08.02-v0.7 修复主播名字获取
 // @note         2020.07.26-v0.6 修复因斗鱼页面改版导致的错误
 // @note         2020.01.11-v0.5 调整弹幕弹窗z-index，高于播放器，低于外部界面
 // @note         2020.01.11-v0.4 调整播放器中弹幕字体大小
@@ -28,6 +29,8 @@
     GM_addStyle('.danmu_content_wrap {width:220px;word-wrap:break-word;}');
     GM_addStyle('.danmu_footer {padding:0px 0px 4px 0px;border-top:solid 1px #ada6a6;text-align:center;border-radius:0px 0px 10px 10px;}}');
 
+    var $ = window.jQuery;
+
     // remove
     $(function () {
         $('div#js-room-activity').remove();
@@ -38,7 +41,7 @@
 
     // construct moveableDiv
     $(function () {
-        var host_name = $('h3.Title-header').title;
+        var host_name = $('h2.Title-anchorNameH2')[0].innerText;
 
         // construct moveable div
         var moveableDiv = "<div class='moveBar'>";
